@@ -17,6 +17,9 @@ const joc = defineChain({
     decimals: 18, // Number of decimals for the native currency
   },
   rpcUrls: {
+    default: {
+      http: ['https://rpc-1.testnet.japanopenchain.org:8545'],
+    },
     public: {
       http: ['https://rpc-1.testnet.japanopenchain.org:8545'],
     },
@@ -25,9 +28,6 @@ const joc = defineChain({
     default: { name: 'Explorer', url: 'https://explorer.testnet.japanopenchain.org/' },
   }
 });
-
-console.log(sepolia);
-console.log(joc);
 
 // Set up chains and providers
 const { chains, publicClient } = configureChains(
@@ -52,7 +52,7 @@ const wagmiConfig = createConfig({
 
 export const RainbowKitWrapper = ({ children }) => (
   <WagmiConfig config={wagmiConfig}>
-    <RainbowKitProvider chains={chains}>
+    <RainbowKitProvider chains={chains}> 
       {children}
     </RainbowKitProvider>
   </WagmiConfig>
